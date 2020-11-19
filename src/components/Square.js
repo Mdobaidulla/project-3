@@ -4,7 +4,7 @@ class Square extends Component {
     render() {
         return (
             <div className="square">
-                Square here
+                
             </div>
         )
     }
