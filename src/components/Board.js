@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Box from './Box';
-import {getBoardNumber} from './apis/Api';
+import {getBoardNumber} from '../apis/Api';
 
 class Board extends Component {
     componentDidMount(){
