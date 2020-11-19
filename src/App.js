@@ -1,6 +1,8 @@
-import './App.css';
 import React, {Component} from 'react'
-import Board from './Board'
+import './App.css';
+
+import Board from './components/Board';
+
 class App extends Component{
   constructor(props){
     super(props);
@@ -27,7 +29,6 @@ class App extends Component{
       <div className="App">
           <h1>Sudoku</h1>
           <Board setDefaultBoard={this.setDefaultBoard} />
-          
       </div>
     )
   }
