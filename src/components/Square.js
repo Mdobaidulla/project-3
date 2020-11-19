@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
 
 class Square extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+          squareValue: this.props.value,
+        }
+      }
     render() {
         return (
             <div className="square">
-                <input type="text" maxLength="1" onKeyPress={this.onKeyPress} onChange={this.onChange} value={this.props.value}/>
+                <input type="text" maxLength="1" onKeyPress={this.onKeyPress} onChange={this.onChange} value={this.state.squareValue}/>
             </div>
         )
     }
@@ -19,10 +25,13 @@ class Square extends Component {
           e.preventDefault();
       }
 
-      // Log input value
+      // Update the state of the value when the user enters a number
       onChange = e => {
         let input = e.target.value;
-        console.log(input);
+        // Testing: console.log(input);
+        this.setState({
+            squareValue: input,
+        });
     }
 }
 
