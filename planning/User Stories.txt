@@ -2,3 +2,6 @@ As a user, I want to click on a box and enter a number so that I can input my re
 
 As a user, I want to only be able to enter a number, i.e. no letter or symbol, so that I can input a valid repsonse.
 
+As a user, I should be able to populate the game board with some data from API GET call. 
+
+
