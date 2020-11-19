@@ -1,0 +1,8 @@
+Board
+    Controls
+        New
+        Solve
+        Verify
+    Row
+        Square
+            Number
