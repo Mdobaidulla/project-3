@@ -2,6 +2,17 @@ As a user, I want to click on a box and enter a number so that I can input my re
 
 As a user, I want to only be able to enter a number, i.e. no letter or symbol, so that I can input a valid repsonse.
 
+<<<<<<< HEAD
 As a user, I should be able to populate the game board with some data from API GET call. 
+=======
+As a user, I want to be notified when I have solved the puzzle, so that I can know that the game has ended.
+
+As a user, I want to be able to select puzzle difficulty (easy/medium/hard), so that I can recieve a puzzle based on my skill level.
+
+As a user, I want to be able to view the rules, so that I understand how to solve the puzzle.
+
+
+
+>>>>>>> d9d55995e45580ff94693f1b3c8bbebabf1c4994
 
 
