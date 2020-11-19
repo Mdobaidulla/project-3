@@ -1,6 +1,6 @@
 import './App.css';
 import React, {Component} from 'react'
-import Board from './Board'
+import MainBoard from './MainBoard'
 class App extends Component{
   constructor(props){
     super(props);
@@ -26,7 +26,9 @@ class App extends Component{
     return(
       <div className="App">
           <h1>Sudoku</h1>
-          <Board setDefaultBoard={this.setDefaultBoard} />
+          <MainBoard 
+          defaultBoard={this.state.defaultBoard}
+          setDefaultBoard={this.setDefaultBoard} />
           
       </div>
     )

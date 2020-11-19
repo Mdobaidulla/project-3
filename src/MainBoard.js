@@ -1,6 +1,6 @@
 import {getBoardNumber} from './apis/Api'
 import React, {Component} from 'react'
-class Board extends Component{
+class MainBoard extends Component{
   componentDidMount(){
       /**
        * Calling the API GET call and passing the value 
@@ -15,6 +15,9 @@ class Board extends Component{
     })
 };  
   render(){
+//    const defaultBoar=this.props.defaultBoard((square) =>{
+//        return <Square />
+//    })
     return(
       <div>
           <h4>Returning Board Value</h4>
@@ -23,4 +26,4 @@ class Board extends Component{
   }
 }
 
-export default Board;
+export default MainBoard;
