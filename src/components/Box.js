@@ -1,22 +1,17 @@
 import React, { Component } from 'react';
 import Square from './Square';
 
-class Row extends Component {
+class Box extends Component {
     render() {
+       const values= this.props.box.map((value, index) =>{
+           return <Square value={value} key={index}/>
+       })
         return (
             <div className="box">
-                <Square />
-                <Square />
-                <Square />
-                <Square />
-                <Square />
-                <Square />
-                <Square />
-                <Square />
-                <Square />
+               {values}
             </div>
         )
     }
 }
 
-export default Row;
+export default Box;

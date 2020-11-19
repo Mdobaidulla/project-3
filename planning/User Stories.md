@@ -1,3 +1,4 @@
+# User Stories
 - [ ] As a user, I want to be able to click on a button to start a new game, only if no game is currently being played, so that I can play it.
 
 - [ ] As a user, when I start a new game, I want to be notified if I am already in the middle of an existing game so that I don't end the existing game prematurely.
@@ -8,7 +9,9 @@
 
 - [ ] As a user, I want to only be able to enter a number, i.e. no letter or symbol, so that I can input a valid repsonse.
 
-- [ ] As a user, I want to know if the number I input into the tile is correct or incorrect so that I can adjust my gameplay strategy as needed.
+- [ ] As a user, I want to know if the number I input into the box is correct or incorrect so that I can adjust my gameplay strategy as needed.
+
+- [ ] As a user, I do not want to change the value of a pre-populated box as that will alter the game itself.
 
 - [ ] As a user, I want to be notified when I have solved the puzzle, so that I can know that the game has ended.
 
@@ -21,3 +24,5 @@
 - [ ] As a user, I want the game to keep stats of the number of times I played in total and the number of times I won in each difficulty in order to better challenge myself.
 
 - [ ] As a user, I want the ability to reset those stats in order to keep track of a new streak.
+
+- [ ] As a user, I want to be able to get the value from API for game board to have the game setup and be ready to play.

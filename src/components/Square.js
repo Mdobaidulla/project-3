@@ -4,7 +4,7 @@ class Square extends Component {
     render() {
         return (
             <div className="square">
-                <input type="text" maxLength="1" onKeyPress={this.onKeyPress} onChange={this.onChange}/>
+                <input type="text" maxLength="1" onKeyPress={this.onKeyPress} onChange={this.onChange} value={this.props.value}/>
             </div>
         )
     }

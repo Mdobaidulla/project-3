@@ -10,24 +10,19 @@ class Board extends Component {
          */
       getBoardNumber('board','easy')
       .then((response) =>{
-          this.props.setDefaultBoard(response.data);
+          this.props.setDefaultBoard(response.data.board);
       })
       .catch((error) =>{
           console.log(`API ERROR:`, error);
       })
     };  
     render() {
+        const boxe = this.props.boxes.map((box, index) => {
+            return <Box box={box} key={index}/>
+        })
         return (
             <div className="board">
-                    <Box/>
-                    <Box/>
-                    <Box/>
-                    <Box/>
-                    <Box/>
-                    <Box/>
-                    <Box/>
-                    <Box/>
-                    <Box/>
+               {boxe}
             </div>
         )
     }
