@@ -1,5 +1,0 @@
-Project idea: To implement a working game of sudoku. The API is used to support the following:
-*Generate a starting board, based on difficulty chosen
-*Validate if a board is either solved or solveable
-*Solve a board
-API:  https://sugoku.herokuapp.com/board
