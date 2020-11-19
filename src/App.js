@@ -1,8 +1,6 @@
 import React, {Component} from 'react'
 import './App.css';
-
 import Board from './components/Board';
-
 class App extends Component{
   constructor(props){
     super(props);
@@ -22,13 +20,19 @@ class App extends Component{
         defaultBoard: boardValue,
       }
     )
-    console.log("Confirmed state",this.state.defaultBoard);
   }
+
+
   render(){
+    
     return(
       <div className="App">
           <h1>Sudoku</h1>
-          <Board setDefaultBoard={this.setDefaultBoard} />
+
+          <Board 
+          setDefaultBoard={this.setDefaultBoard} 
+          boxes={this.state.defaultBoard}
+          />
       </div>
     )
   }
