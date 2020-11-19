@@ -1,0 +1,4 @@
+As a user, I want to click on a box and enter a number so that I can input my response.
+
+As a user, I want to only be able to enter a number, i.e. no letter or symbol, so that I can input a valid repsonse.
+
