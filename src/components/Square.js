@@ -10,7 +10,12 @@ class Square extends Component {
     render() {
         return (
             <div className="square">
-                <input type="text" maxLength="1" onKeyPress={this.onKeyPress} onChange={this.onChange} value={this.state.squareValue} disabled={this.props.squareStatus}/>
+                <input type="text" maxLength="1"
+                onKeyPress={this.onKeyPress}
+                onChange={this.onChange}
+                value={this.state.squareValue} 
+                disabled={this.props.squareStatus}
+                />
             </div>
         )
     }
@@ -28,10 +33,14 @@ class Square extends Component {
       // Update the state of the value when the user enters a number
       onChange = e => {
         let input = e.target.value;
-        // Testing: console.log(input);
+        let boxID = this.props.boxID;
+        let squareID = this.props.squareID;
+
+        // DEBUG - console.log(`The value ${input} was entered into square ${squareID} of box ${boxID}`);
         this.setState({
             squareValue: input,
         });
+        this.props.updateBoard(input, boxID, squareID);
     }
 }
 
