@@ -1,8 +1,14 @@
-Board
-    Controls
-        New
-        Solve
-        Verify
-    Row
-        Square
-            Number
+App
+    
+    Board  
+        Row
+           Square
+            Input
+            Validate
+    Control
+          New
+          Solve
+          Verify
+    
+    Stats
+    Rules
