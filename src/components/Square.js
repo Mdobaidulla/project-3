@@ -31,10 +31,11 @@ class Square extends Component {
         let boxID = this.props.boxID;
         let squareID = this.props.squareID;
 
-        console.log(`The value ${input} was entered into square ${squareID} of box ${boxID}`);
+        // DEBUG - console.log(`The value ${input} was entered into square ${squareID} of box ${boxID}`);
         this.setState({
             squareValue: input,
         });
+        this.props.updateBoard(input, boxID, squareID);
     }
 }
 

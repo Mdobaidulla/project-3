@@ -11,7 +11,7 @@ class Box extends Component {
                 value = '';
                 squareStatus = "";
            }
-           return <Square value={value} key={index} squareStatus={squareStatus} boxID={this.props.boxID} squareID={index}/>
+           return <Square value={value} key={index} squareStatus={squareStatus} boxID={this.props.boxID} squareID={index} updateBoard={this.props.updateBoard}/>
        })
         return (
             <div className="box">
