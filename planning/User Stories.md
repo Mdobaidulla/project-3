@@ -26,3 +26,9 @@
 - [ ] As a user, I want the ability to reset those stats in order to keep track of a new streak.
 
 - [ ] As a user, I want to be able to get the value from API for game board to have the game setup and be ready to play.
+
+- [ ] As a user, I want the game to keep track of the number of incorrect attempts during a game so that I can better track my abilities.
+
+- [ ] As a user, I want the board to keep a running timer on the game so that I know how much time I have spent playing that game.
+
+- [ ] As a user, I want the ability to restart a game so that I can try again if I make too many mistakes.
