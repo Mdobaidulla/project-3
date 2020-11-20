@@ -32,6 +32,11 @@ class Board extends Component {
             </div>
         )
     }
+
+    // Take new user input and the box & square IDs and update the board
+    updateBoard = (input, boxID, squareID) => {
+
+    }
 }
 
 export default Board;
