@@ -10,12 +10,13 @@ class Board extends Component {
          */
       getBoardNumber('board','easy')
       .then((response) =>{
-          this.props.setDefaultBoard(response.data.board);
-          this.setState({
-              updatedBoard: this.props.boxes.map(function(arr) {
-                return arr.slice();
-            })
-          })
+        this.props.setDefaultBoard(response.data.board, response.data);
+        this.setState({
+            updatedBoard: this.props.boxes.map(function(arr) {
+            return arr.slice();
+         })
+        })
+        console.log('Get request data: ',response.data);
       })
       .catch((error) =>{
           console.log(`API ERROR:`, error);
@@ -27,6 +28,7 @@ class Board extends Component {
           updatedBoard: [],
         }
       } 
+
     render() {
         const boxe = this.props.boxes.map((box, index) => {
             return <Box box={box} key={index} boxID={index} updateBoard={this.updateBoard}/>
