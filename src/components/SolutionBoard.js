@@ -13,7 +13,7 @@ class SolutionBoard extends Component{
    render(){
        return(
            <>
-           <h1>Solution Board</h1>
+        
            </>
             
        )
