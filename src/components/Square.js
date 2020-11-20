@@ -28,7 +28,7 @@ class Square extends Component {
       // Update the state of the value when the user enters a number
       onChange = e => {
         let input = e.target.value;
-        // Testing: console.log(input);
+        console.log(input, this.props.index);
         this.setState({
             squareValue: input,
         });
