@@ -31,7 +31,7 @@ class Board extends Component {
 
     render() {
         const boxe = this.props.boxes.map((box, index) => {
-            return <Box box={box} key={index} boxID={index} updateBoard={this.updateBoard}/>
+            return <Box box={box} key={index} boxID={index} updateBoard={this.updateBoard} solutionBox={this.props.solutionBoard[index]}/>
         })
         return (
             <div className="board">
@@ -59,15 +59,13 @@ class Board extends Component {
         this.setState({
             updatedBoard: updatedBoard,
         })
-        // DEBUG - console.log(`Number should be ${solutionBoard[boxID][squareID]}`);
-        // DEBUG - console.log(`Number is ${updatedBoard[boxID][squareID]}`);
-        console.log(this.isCorrectInput(solutionBoard[boxID][squareID],updatedBoard[boxID][squareID]));
 
+        // DEBUG - console.log(this.isCorrectInput(solutionBoard[boxID][squareID],updatedBoard[boxID][squareID]));
     }
 
     // Check if the new value added is the correct input
     isCorrectInput = (numSolution, numInput) => {
-        if (numSolution === numInput)
+        if (numSolution === numInput || numSolution == NaN)
             return true;
         else   
             return false; 

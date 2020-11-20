@@ -25,6 +25,7 @@ body {
 
 .square{
   outline: solid 1px rgba(0, 0, 0, 0.295);
+  background: rgba(248, 248, 195, 0.507);
 }
 
 .square:hover {
@@ -53,6 +54,16 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type=number] {
   -moz-appearance: textfield;
+}
+
+.incorrect-input {
+  background: red;
+  color: white;
+}
+
+.correct-input {
+  background: white;
+  color: black;
 }
 
 
