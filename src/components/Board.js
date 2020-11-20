@@ -15,10 +15,16 @@ class Board extends Component {
       .catch((error) =>{
           console.log(`API ERROR:`, error);
       })
-    };  
+    }; 
+    constructor(props) {
+        super(props);
+        this.state = {
+          updatedBoard: [],
+        }
+      } 
     render() {
         const boxe = this.props.boxes.map((box, index) => {
-            return <Box box={box} key={index}/>
+            return <Box box={box} key={index} boxID={index}/>
         })
         return (
             <div className="board">

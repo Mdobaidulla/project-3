@@ -2,6 +2,12 @@ import React, { Component } from 'react';
 import Square from './Square';
 
 class Box extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+          boxID: this.props.index,
+        }
+      }
     render() {
        const values= this.props.box.map((value, index) =>{
            let squareStatus = "disabled";
@@ -11,7 +17,7 @@ class Box extends Component {
                 value = '';
                 squareStatus = "";
            }
-           return <Square value={value} key={index} squareStatus={squareStatus} index={index}/>
+           return <Square value={value} key={index} squareStatus={squareStatus} squareID={index}/>
        })
         return (
             <div className="box">
