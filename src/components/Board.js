@@ -35,11 +35,17 @@ class Board extends Component {
 
     // Take new user input and the box & square IDs and update the board
     updateBoard = (input, boxID, squareID) => {
-        console.log(`The value ${input} was entered into square ${squareID} of box ${boxID}`);
+        // DEBUG - console.log(`The value ${input} was entered into square ${squareID} of box ${boxID}`);
+        
+        // Create a copy of the boxes array to store changes
         let updatedBoard = this.props.boxes.map(function(arr) {
             return arr.slice();
         });
-        updatedBoard[boxID][squareID] = input;
+
+        // Update the cell in the array that the user modified
+        updatedBoard[boxID][squareID] = parseInt(input);
+
+        // Set the state with the new changes of the updated board
         this.setState({
             updatedBoard: updatedBoard,
         })
