@@ -11,6 +11,11 @@ class Board extends Component {
       getBoardNumber('board','easy')
       .then((response) =>{
           this.props.setDefaultBoard(response.data.board);
+          this.setState({
+              updatedBoard: this.props.boxes.map(function(arr) {
+                return arr.slice();
+            })
+          })
       })
       .catch((error) =>{
           console.log(`API ERROR:`, error);
@@ -36,11 +41,9 @@ class Board extends Component {
     // Take new user input and the box & square IDs and update the board
     updateBoard = (input, boxID, squareID) => {
         // DEBUG - console.log(`The value ${input} was entered into square ${squareID} of box ${boxID}`);
-        
+
         // Create a copy of the boxes array to store changes
-        let updatedBoard = this.props.boxes.map(function(arr) {
-            return arr.slice();
-        });
+        let updatedBoard = this.state.updatedBoard;
 
         // Update the cell in the array that the user modified
         updatedBoard[boxID][squareID] = parseInt(input);
