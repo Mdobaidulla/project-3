@@ -10,7 +10,12 @@ class Square extends Component {
     render() {
         return (
             <div className="square">
-                <input type="text" maxLength="1" onKeyPress={this.onKeyPress} onChange={this.onChange} value={this.state.squareValue} disabled={this.props.squareStatus}/>
+                <input type="text" maxLength="1"
+                onKeyPress={this.onKeyPress}
+                onChange={this.onChange}
+                value={this.state.squareValue} 
+                disabled={this.props.squareStatus}
+                />
             </div>
         )
     }
