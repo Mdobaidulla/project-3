@@ -53,6 +53,11 @@ class Board extends Component {
             updatedBoard: updatedBoard,
         })
     }
+
+    // Check if the new value added is the correct input
+    isCorrectInput = () => {
+
+    }
 }
 
 export default Board;
