@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import './App.css';
 import Board from './components/Board';
+import Control from './components/Control';
+
 class App extends Component{
   constructor(props){
     super(props);
@@ -27,12 +29,13 @@ class App extends Component{
     
     return(
       <div className="App">
-          <h1>Sudoku</h1>
+          <h1>Sublocu</h1>
 
           <Board 
           setDefaultBoard={this.setDefaultBoard} 
           boxes={this.state.defaultBoard}
           />
+          <Control />
       </div>
     )
   }
