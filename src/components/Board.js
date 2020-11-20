@@ -44,6 +44,11 @@ class Board extends Component {
     updateBoard = (input, boxID, squareID) => {
         // DEBUG - console.log(`The value ${input} was entered into square ${squareID} of box ${boxID}`);
 
+        /// Create a copy of the solution board
+        let solutionBoard = this.props.solutionBoard.map(function(arr) {
+            return arr.slice();
+         })
+
         // Create a copy of the boxes array to store changes
         let updatedBoard = this.state.updatedBoard;
 
@@ -54,11 +59,18 @@ class Board extends Component {
         this.setState({
             updatedBoard: updatedBoard,
         })
+        // DEBUG - console.log(`Number should be ${solutionBoard[boxID][squareID]}`);
+        // DEBUG - console.log(`Number is ${updatedBoard[boxID][squareID]}`);
+        console.log(this.isCorrectInput(solutionBoard[boxID][squareID],updatedBoard[boxID][squareID]));
+
     }
 
     // Check if the new value added is the correct input
-    isCorrectInput = () => {
-
+    isCorrectInput = (numSolution, numInput) => {
+        if (numSolution === numInput)
+            return true;
+        else   
+            return false; 
     }
 }
 
