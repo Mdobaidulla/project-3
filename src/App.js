@@ -21,7 +21,7 @@ class App extends Component {
 	 * @param {this is the value we will get from API get call} boardValue
 	 */
 	setDefaultBoard = (boardValue, response) => {
-    let transformBoard = this.transformBoard(boardValue);
+    let transformBoard = this.transformBoard(boardValue); //transform board values to have each nested array represent a box instead of a row
 		this.setState({
 			defaultBoard: transformBoard,
 			board: response,
@@ -29,12 +29,13 @@ class App extends Component {
 	};
 	//This method is updating the value that we hve from solition board
 	setSolutionBoard = (solutionBoard) => {
-    let transformSolution = this.transformBoard(solutionBoard);
+    let transformSolution = this.transformBoard(solutionBoard); //transform solution board to have each nested array represent a box instead of a row
 		this.setState({ 
       solutionBoard: transformSolution 
     });
   };
   
+  // Function to transform input array so each nested array represents a box instead of a row
   transformBoard = (array) => {
     let transformedArray = [];
     for(let i = 0; i < 9; i=i+3)
