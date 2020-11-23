@@ -51,7 +51,7 @@ class App extends Component {
 
   showModal = e => {
     this.setState({
-      show: true,
+      show: !this.state.show
     });
   };
 
@@ -73,7 +73,7 @@ class App extends Component {
 						board={this.state.board}
 					/>
 				)}
-				<Modal show={this.state.show}/>
+				<Modal onClose={this.showModal} show={this.state.show}/>
 			</div>
 		);
 	}
