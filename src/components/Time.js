@@ -75,30 +75,10 @@ class Control extends Component {
 	render() {
 		return (
 			<>
-				<div className="current">
-					Current game:
-					<button className="current restart" onClick={this.start}>
-						Restart
-					</button>
-					<button className="current end" onClick={this.reset}>
-						Solve
-					</button>
-				</div>
-				<div className="new">
-					<select id={this.state.level} onChange={this.chooseLevel}>
-						<option disabled selected value>
-							Choose New Game Level
-						</option>
-						<option value="easy">Easy</option>
-						<option value="medium">Medium</option>
-						<option value="hard">Hard</option>
-						<option value="random">Random</option>
-					</select>
-				</div>
-				Timer: {this.state.minutes}:{this.state.seconds}
+				Timer: {this.props.minutes}:{this.props.seconds}
 			</>
 		);
 	}
 }
 
-export default Control;
+export default Time;
