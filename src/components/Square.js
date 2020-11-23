@@ -5,6 +5,7 @@ class Square extends Component {
         super(props);
         this.state = {
           squareValue: this.props.value,
+          cssClass: '',
         }
       }
     render() {
@@ -15,6 +16,7 @@ class Square extends Component {
                 onChange={this.onChange}
                 value={this.state.squareValue} 
                 disabled={this.props.squareStatus}
+                className={this.state.cssClass}
                 />
             </div>
         )
@@ -35,13 +37,28 @@ class Square extends Component {
         let input = e.target.value;
         let boxID = this.props.boxID;
         let squareID = this.props.squareID;
+        let solution = parseInt(this.props.solutionBox[squareID]);
 
         // DEBUG - console.log(`The value ${input} was entered into square ${squareID} of box ${boxID}`);
         this.setState({
             squareValue: input,
         });
         this.props.updateBoard(input, boxID, squareID);
+
+        // Update UI to turn square red if not correct number
+        if (parseInt(input) !== solution && input !== '')
+        {
+            this.setState({
+                cssClass: 'incorrect-input',
+            })
+        }
+        else
+        {
+            this.setState({
+                cssClass: 'correct-input',
+            })
+        }
     }
-}
+}   
 
 export default Square;
