@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import "./App.css";
+import "./Footer.css";
 import Board from "./components/Board";
 import Control from "./components/Control";
 import Rules from "./components/Rules";
+import Footer from "./components/Footer";
 
 import SolutionBoard from "./components/SolutionBoard";
 class App extends Component {
@@ -50,10 +52,12 @@ class App extends Component {
 
 	render() {
 		return (
-			<>
-				<div className="App">
-					<h1 align="center">Sublocu</h1>
-
+			<div className="fullApp">
+			    <header>
+				<h1 align="center">Sublocu</h1>
+				</header>
+				<section>	
+				<br></br>
 					<Board
 						setDefaultBoard={this.setDefaultBoard}
 						boxes={this.state.defaultBoard}
@@ -66,9 +70,14 @@ class App extends Component {
 							board={this.state.board}
 						/>
 					)}
-				</div>{" "}
+				{" "}
 				<Rules />
-			</>
+				</section>
+				<footer>
+				<Footer />
+				</footer>
+				
+			 </div>
 		);
 	}
 }
