@@ -26,6 +26,7 @@ class Board extends Component {
         super(props);
         this.state = {
           updatedBoard: [],
+          isSolved: false,
         }
       } 
 
@@ -55,9 +56,13 @@ class Board extends Component {
         // Update the cell in the array that the user modified
         updatedBoard[boxID][squareID] = parseInt(input);
 
+        // Check if the addition of the new input solved the board
+        let isSolved = isSolved(updatedBoard, solutionBoard);
+
         // Set the state with the new changes of the updated board
         this.setState({
             updatedBoard: updatedBoard,
+            isSolved: isSolved,
         })
 
         // DEBUG - console.log(this.isCorrectInput(solutionBoard[boxID][squareID],updatedBoard[boxID][squareID]));
@@ -69,6 +74,10 @@ class Board extends Component {
             return true;
         else   
             return false; 
+    }
+
+    isSolved = (inputArray, solutionArray) => {
+        return false;
     }
 }
 
