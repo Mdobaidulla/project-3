@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import Board from "./components/Board";
 import Control from "./components/Control";
+import Rules from "./components/Rules";
 
 import SolutionBoard from "./components/SolutionBoard";
 class App extends Component {
@@ -33,22 +34,25 @@ class App extends Component {
 
 	render() {
 		return (
-			<div className="App">
-				<h1 align="center">Sublocu</h1>
+			<>
+				<div className="App">
+					<h1 align="center">Sublocu</h1>
 
-				<Board
-					setDefaultBoard={this.setDefaultBoard}
-					boxes={this.state.defaultBoard}
-					solutionBoard={this.state.solutionBoard}
-				/>
-				<Control />
-				{this.state.defaultBoard.length > 0 && (
-					<SolutionBoard
-						setSolutionBoard={this.setSolutionBoard}
-						board={this.state.board}
+					<Board
+						setDefaultBoard={this.setDefaultBoard}
+						boxes={this.state.defaultBoard}
+						solutionBoard={this.state.solutionBoard}
 					/>
-				)}
-			</div>
+					<Control />
+					{this.state.defaultBoard.length > 0 && (
+						<SolutionBoard
+							setSolutionBoard={this.setSolutionBoard}
+							board={this.state.board}
+						/>
+					)}
+				</div>{" "}
+				<Rules />
+			</>
 		);
 	}
 }

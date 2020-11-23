@@ -6,13 +6,17 @@ body {
   margin: 0;
 }
 
-.new{
+.new, .current{
   display: flex;
   justify-content: center;
   text-align: center;
   margin-left: auto;
   margin-right: auto;
   color: white;
+}
+.current{
+  color: black;
+  padding-bottom: 10px;
 }
 .newtext, .restart{
   color: black;
@@ -34,7 +38,7 @@ body {
 background-color: hotpink;
 }
 
-.board {
+.board, .rules {
   height: 50vmin;
   width: 50vmin;
   outline: solid 3px black;
@@ -83,6 +87,7 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
 }
+
 
 
 
