@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import Board from "./components/Board";
 import Control from "./components/Control";
+import Modal from "./components/Modal";
 
 import SolutionBoard from "./components/SolutionBoard";
 class App extends Component {
@@ -11,6 +12,7 @@ class App extends Component {
 			defaultBoard: [],
 			board: {},
 			solutionBoard: [],
+			show: false,
 		};
 	}
 
@@ -47,6 +49,12 @@ class App extends Component {
      return transformedArray;
   }
 
+  showModal = e => {
+    this.setState({
+      show: true,
+    });
+  };
+
 	render() {
 		return (
 			<div className="App">
@@ -56,6 +64,7 @@ class App extends Component {
 					setDefaultBoard={this.setDefaultBoard}
 					boxes={this.state.defaultBoard}
 					solutionBoard={this.state.solutionBoard}
+					showModal = {this.showModal}
 				/>
 				<Control />
 				{this.state.defaultBoard.length > 0 && (
@@ -64,6 +73,7 @@ class App extends Component {
 						board={this.state.board}
 					/>
 				)}
+				<Modal show={this.state.show}/>
 			</div>
 		);
 	}
