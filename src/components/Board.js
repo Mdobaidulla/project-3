@@ -32,7 +32,7 @@ class Board extends Component {
 
     render() {
         const boxe = this.props.boxes.map((box, index) => {
-            return <Box box={box} key={index} boxID={index} updateBoard={this.updateBoard} solutionBox={this.props.solutionBoard[index]}/>
+            return <Box box={box} key={index} boxID={index} updateBoard={this.updateBoard} solutionBox={this.props.solutionBoard[index]} isSolved={this.state.isSolved}/>
         })
         return (
             <div className="board">
@@ -63,21 +63,14 @@ class Board extends Component {
         // Set the state with the new changes of the updated board
         this.setState({
             updatedBoard: updatedBoard,
+            isSolved: isSolved,
         })
 
         // DEBUG - console.log(this.isCorrectInput(solutionBoard[boxID][squareID],updatedBoard[boxID][squareID]));
     }
 
-    // Check if the new value added is the correct input
-    isCorrectInput = (numSolution, numInput) => {
-        if (numSolution === numInput || numSolution == NaN)
-            return true;
-        else   
-            return false; 
-    }
-
-    isSolved = (a, b) => {
-        if (JSON.stringify(a) === JSON.stringify(b))
+    isSolved = (playerBoard, solutionBoard) => {
+        if (JSON.stringify(playerBoard) === JSON.stringify(solutionBoard))
             return true
         else
             return false;

@@ -95,5 +95,10 @@ input[type=number] {
   color: black;
 }
 
+.board-solved {
+  background: lime;
+  color: hotpink;
+}
+
 
 
