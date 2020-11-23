@@ -58,7 +58,10 @@ class Board extends Component {
 
         // Check if the addition of the new input solved the board
         let isSolved = this.isSolved(updatedBoard, solutionBoard);
-        console.log(`isSolved: ${isSolved}`);
+        if (isSolved)
+        {
+            console.log(`Congratulations! You solved the puzzle!`);
+        }
 
         // Set the state with the new changes of the updated board
         this.setState({
