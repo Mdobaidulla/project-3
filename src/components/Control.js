@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {Link} from 'react-router-dom';
 
 class Control extends Component {
 	constructor() {
@@ -8,7 +9,7 @@ class Control extends Component {
 			minutes: 0,
 			run: false,
             level: "",
-           // stop: "",
+		   // stop: "",
 		};
 		this.counter = this.counter.bind(this);
 		this.count = this.count.bind(this);
@@ -33,9 +34,12 @@ class Control extends Component {
 
 	counter = () => {
 		this.setState({
-			seconds: this.state.seconds + 1,
+			
+			seconds:this.state.seconds + 1,
 		});
+		
 		if (this.state.seconds === 60) {
+			
 			this.setState({
 				minutes: this.state.minutes + 1,
 				seconds: 0,
@@ -92,22 +96,15 @@ class Control extends Component {
 					<button  onClick={this.reset}>
 						Solve
 					</button>
-			
-			
-				{/* <select id={this.state.level} onChange={this.chooseLevel}>
-						<option disabled selected value>Select</option>
-						<option value="easy">Easy</option>
-						<option value="medium">Medium</option>
-						<option value="hard">Hard</option>
-						<option value="random">Random</option>
-					</select> */}
-			        <button  >
-						Help
+			        <button >
+					<Link to='/rules'>Help</Link>
 					</button>
-				Timer: {this.state.minutes}:{this.state.seconds}
-				
+				Timer:&nbsp;
+				 {(this.state.minutes<10) ? `0${this.state.minutes}` : this.state.minutes }: 
+				{(this.state.seconds<10) ? `0${this.state.seconds}` : this.state.seconds }
 			</>
 		);
+	
 	}
 }
 
