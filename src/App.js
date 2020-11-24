@@ -3,11 +3,13 @@ import "./App.css";
 import "./Footer.css";
 import Board from "./components/Board";
 import Control from "./components/Control";
+import CustomModal from './components/CustomModal'
 import Rules from "./components/Rules";
 import Footer from "./components/Footer";
-import { Route, Link } from "react-router-dom";
+import {Route} from 'react-router-dom';
 
 import SolutionBoard from "./components/SolutionBoard";
+
 class App extends Component {
 	constructor(props) {
 		super(props);
@@ -15,7 +17,8 @@ class App extends Component {
 			defaultBoard: [],
 			board: {},
 			solutionBoard: [],
-			level: "easy",
+			open: false,
+			level: "",
 		};
 	}
 
@@ -64,45 +67,66 @@ class App extends Component {
 		return transformedArray;
 	};
 
+  // Opens the modal popup when the user wins
+  openModal = () => { 
+	this.setState({
+			open: true
+		});
+	}
+
+	// Closes the modal popup when the user presses the close button
+	closeModal = () => {
+        this.setState({
+            open: false
+        });
+    }
+
 	render() {
      //console.log("App level", this.state.level)
 		return (
 			<div className="fullApp">
+
+				{/* Header Section */}
 				<header>
 					<h1 align="center">Sublocu</h1>
 				</header>
-				<section>
-					<div className="controlBoard">
-            <Control setLevel={this.setLevel}
-            solution={this.props.solutionBoard} 
-            start = "true"
-            />
-						{this.state.defaultBoard.length > 0 && (
-							<SolutionBoard
-								setSolutionBoard={this.setSolutionBoard}
-								board={this.state.board}
-							/>
-						)}{" "}
-					</div>
-					<br></br>
+				<section>	
+				<div className="controlBoard">
+					<Control setLevel={this.setLevel}/>
 
-					<div className="gameBoard">
-						<Board
-							setDefaultBoard={this.setDefaultBoard}
-							boxes={this.state.defaultBoard}
-							solutionBoard={this.state.solutionBoard}
-							level={this.setLevel}
+					{this.state.defaultBoard.length > 0 && (
+						<SolutionBoard
+							setSolutionBoard={this.setSolutionBoard}
+							board={this.state.board}
 						/>
-					</div>
-
-					<div>
-						<Route path="/rules" component={Rules} />
-					</div>
+					)}
+				{" "}
+				</div>
+				<br></br>
+	
+				<div> 
+				<Route path='/' exact render = { ()=>{
+				return	<div className="gameBoard">
+					<Board
+						setDefaultBoard={this.setDefaultBoard}
+						boxes={this.state.defaultBoard}
+						solutionBoard={this.state.solutionBoard}
+					/>
+			    </div>
+				}} />
+				<Route path='/rules' exact component ={Rules} />
+				</div>
 				</section>
+
+				{/* Footer Section */}
 				<footer>
 					<Footer />
 				</footer>
-			</div>
+
+				{/* Modal Pop-Up */}
+				<CustomModal open={this.state.open} close={this.closeModal}/>
+
+			 </div>
 		);
 	}
 }

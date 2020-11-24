@@ -7,8 +7,14 @@ class Control extends Component {
 		this.state = {
 			seconds: 0,
 			minutes: 20,
-            level: props.level,
-            started: "yes",
+			level: props.level,
+			run: false,
+			level: "easy",
+		   // stop: "",
+		   medium:true,
+		   hard: false,
+		   random: false,
+			
 		};
 		this.counter = this.counter.bind(this);
 		this.count = this.count.bind(this);
@@ -63,6 +69,11 @@ class Control extends Component {
 	chooseLevel = (event) => {
 		this.props.setLevel(event.target.value);
 	};
+	changeLevel = () => {
+		this.setState=({
+       
+		})
+	}
 
 	componentWillUnmount() {
 		clearInterval(this.state.countStart);
@@ -77,35 +88,34 @@ class Control extends Component {
 		}
 		return (
 			<>
-				<span >
-					<span className="hide">Current Level: &nbsp;&nbsp;&nbsp;</span>
-					<select
-						name={this.state.level}
-						id={this.state.level}
-						onChange={this.chooseLevel}
-					>
-						<option>Select</option>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>
+			<span className="hide">Current Level: &nbsp;&nbsp;&nbsp;</span><select name={this.state.level} id={this.state.level} onChange={this.chooseLevel}>
+				
 						<option value="easy">Easy</option>
-						<option value="medium">Medium</option>
-						<option value="hard">Hard</option>
-						<option value="random">Random</option>
+						<option value="medium" disabled={!this.state.medium}>Medium</option>
+						<option value="hard" disabled={!this.state.hard}>Hard</option>
+						<option value="random" disabled={!this.state.random}>Random</option>
 					</select>
-				</span>
-				<button onClick={this.restart}>Restart</button>
-				<button onClick={this.stop}>Solve</button>
-				<button>
-					<Link to="/rules">Help</Link>
-				</button>
-				<span className={timerColor}>
-					Timer:&nbsp;
-					{this.state.minutes < 10
-						? `0${this.state.minutes}`
-						: this.state.minutes}
-					:
-					{this.state.seconds < 10
-						? `0${this.state.seconds}`
-						: this.state.seconds}
-				</span>
+
+					</span>
+				
+					<button onClick={this.start}>
+						Restart
+					</button>
+				
+					<button  onClick={this.stop}>
+						Solve
+					</button>
+
+					<button >
+					<Link to='/'>Game</Link>
+					</button>
+			        <button >
+					<Link to='/rules'>Help</Link>
+					</button>
+					<span className="hide">Timer:</span>&nbsp;
+				 {(this.state.minutes<10) ? `0${this.state.minutes}` : this.state.minutes }: 
+				{(this.state.seconds<10) ? `0${this.state.seconds}` : this.state.seconds }&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			</>
 		);
 	}

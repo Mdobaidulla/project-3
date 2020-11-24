@@ -9,6 +9,12 @@ class Square extends Component {
         }
       }
     render() {
+        // if (this.props.isSolved === true)
+        // {
+        //     this.setState({
+        //         cssClass: 'board-solved',
+        //     })
+        // }
         return (
             <div className="square">
                 <input type="text" maxLength="1"
