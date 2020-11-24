@@ -9,7 +9,7 @@ class Board extends Component {
 		 * into App.js through setDefaultBoard method
 		 */
 		let thisLevel = this.props.level;
-		console.log("This level", thisLevel);
+		console.log("This board level", thisLevel);
 		getBoardNumber("board", 'easy')
 			.then((response) => {
 				this.props.setDefaultBoard(response.data.board, response.data);

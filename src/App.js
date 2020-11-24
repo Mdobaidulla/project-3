@@ -5,7 +5,7 @@ import Board from "./components/Board";
 import Control from "./components/Control";
 import Rules from "./components/Rules";
 import Footer from "./components/Footer";
-import {Route, Link} from 'react-router-dom';
+import { Route, Link } from "react-router-dom";
 
 import SolutionBoard from "./components/SolutionBoard";
 class App extends Component {
@@ -15,7 +15,7 @@ class App extends Component {
 			defaultBoard: [],
 			board: {},
 			solutionBoard: [],
-			level: "easy",
+			level: "",
 		};
 	}
 
@@ -40,6 +40,12 @@ class App extends Component {
 		});
 	};
 
+	setLevel = (level) => {
+		this.setState({
+			level: level,
+		});
+	};
+
 	// Function to transform input array so each nested array represents a box instead of a row
 	transformBoard = (array) => {
 		let transformedArray = [];
@@ -57,45 +63,42 @@ class App extends Component {
 		return transformedArray;
 	};
 
-	
-
 	render() {
+     console.log("App level", this.state.level)
 		return (
 			<div className="fullApp">
-			    <header>
-				<h1 align="center">Sublocu</h1>
+				<header>
+					<h1 align="center">Sublocu</h1>
 				</header>
-				<section>	
-				
-				<div className="controlBoard">
-					<Control />
-					{this.state.defaultBoard.length > 0 && (
-						<SolutionBoard
-							setSolutionBoard={this.setSolutionBoard}
-							board={this.state.board}
+				<section>
+					<div className="controlBoard">
+						<Control setLevel={this.setLevel} />
+						{this.state.defaultBoard.length > 0 && (
+							<SolutionBoard
+								setSolutionBoard={this.setSolutionBoard}
+								board={this.state.board}
+							/>
+						)}{" "}
+					</div>
+					<br></br>
+
+					<div className="gameBoard">
+						<Board
+							setDefaultBoard={this.setDefaultBoard}
+							boxes={this.state.defaultBoard}
+							solutionBoard={this.state.solutionBoard}
+							level={this.setLevel}
 						/>
-					)}
-				{" "}
-				</div>
-				<br></br>
-				
-				 <div className="gameBoard">
-					<Board
-						setDefaultBoard={this.setDefaultBoard}
-						boxes={this.state.defaultBoard}
-						solutionBoard={this.state.solutionBoard}
-					/>
-			    </div>
-	
-				<div> 
-				<Route path='/rules' component ={Rules} />
-				</div>
+					</div>
+
+					<div>
+						<Route path="/rules" component={Rules} />
+					</div>
 				</section>
 				<footer>
-				<Footer />
+					<Footer />
 				</footer>
-				
-			 </div>
+			</div>
 		);
 	}
 }

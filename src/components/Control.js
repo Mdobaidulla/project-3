@@ -6,17 +6,14 @@ class Control extends Component {
 		super(props);
 		this.state = {
 			seconds: 0,
-			minutes: 0,
+			minutes: 20,
 			level: props.level,
-			warning: "",
 		};
 		this.counter = this.counter.bind(this);
 		this.count = this.count.bind(this);
 		this.chooseLevel = this.chooseLevel.bind(this);
 	}
-	componentDidMount() {
-		//  this.chooseLevel("easy");
-	}
+	componentDidMount() {}
 
 	start = () => {
 		this.count();
@@ -29,48 +26,40 @@ class Control extends Component {
 	};
 
 	counter = () => {
-		this.setState({
-			seconds: this.state.seconds + 1,
-		});
-
-		if (this.state.seconds === 60) {
+		if (this.state.seconds === 0) {
 			this.setState({
-				minutes: this.state.minutes + 1,
-				seconds: 0,
+				minutes: this.state.minutes - 1,
+				seconds: 60,
 			});
 		}
-		this.timerWarning();
-	};
-
-	stop = (flag) => {
-		clearInterval(() => {
-			this.count();
+		this.setState({
+			seconds: this.state.seconds - 1,
 		});
+
+		if (this.state.seconds === 0 && this.state.minutes === 0) {
+			this.stop();
+		}
 	};
 
-	reset = (e) => {
+	stop = (e) => {
 		clearInterval(this.timer);
 	};
 
 	chooseLevel = (event) => {
-		console.log(event.target.value);
-		this.setState({
-			level: event.target.value,
-		});
-	};
-	timerWarning = () => {
-		if (this.state.minutes === 0 && this.state.seconds === 10) {
-			console.log("WARNING");
-			this.setState({
-				warning: "WARNING!",
-			});
-		}
+		this.props.setLevel(event.target.value);
 	};
 
 	componentWillUnmount() {
 		clearInterval(this.state.countStart);
 	}
 	render() {
+		let timerColor;
+		if (this.state.seconds <= 10 && this.state.minutes===0) {
+			timerColor = "timer-warning";
+		}
+		if (this.state.seconds <= 5 && this.state.minutes===0) {
+			timerColor = "timer-critical";
+		}
 		return (
 			<>
 				<span>
@@ -88,19 +77,20 @@ class Control extends Component {
 					</select>
 				</span>
 				<button onClick={this.start}>Restart</button>
-				<button onClick={this.reset}>Solve</button>
+				<button onClick={this.stop}>Solve</button>
 				<button>
 					<Link to="/rules">Help</Link>
 				</button>
-				Timer:&nbsp;
-				{this.state.minutes < 10
-					? `0${this.state.minutes}`
-					: this.state.minutes}
-				:
-				{this.state.seconds < 10
-					? `0${this.state.seconds}`
-					: this.state.seconds}
-				{this.warning}
+				<span className={timerColor}>
+					Timer:&nbsp;
+					{this.state.minutes < 10
+						? `0${this.state.minutes}`
+						: this.state.minutes}
+					:
+					{this.state.seconds < 10
+						? `0${this.state.seconds}`
+						: this.state.seconds}
+				</span>
 			</>
 		);
 	}
