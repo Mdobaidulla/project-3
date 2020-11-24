@@ -3,8 +3,9 @@ import "./App.css";
 import Board from "./components/Board";
 import Control from "./components/Control";
 import CustomModal from './components/CustomModal'
-
 import SolutionBoard from "./components/SolutionBoard";
+import $ from 'jquery';
+
 class App extends Component {
 	constructor(props) {
 		super(props);
@@ -12,7 +13,7 @@ class App extends Component {
 			defaultBoard: [],
 			board: {},
 			solutionBoard: [],
-			show: false,
+			open: false,
 		};
 	}
 
@@ -49,11 +50,17 @@ class App extends Component {
      return transformedArray;
   }
 
-  showModal = e => {
-    this.setState({
-      show: !this.state.show
-    });
-  };
+  openModal = () => { 
+	this.setState({
+			open: true
+		});
+	}
+
+	closeModal = () => {
+        this.setState({
+            open: false
+        });
+    }
 
 	render() {
 		return (
@@ -64,7 +71,7 @@ class App extends Component {
 					setDefaultBoard={this.setDefaultBoard}
 					boxes={this.state.defaultBoard}
 					solutionBoard={this.state.solutionBoard}
-					showModal = {this.showModal}
+					openModal = {this.openModal}
 				/>
 				<Control />
 				{this.state.defaultBoard.length > 0 && (
@@ -73,7 +80,7 @@ class App extends Component {
 						board={this.state.board}
 					/>
 				)}
-				<CustomModal />
+				<CustomModal open={this.state.open} close={this.closeModal}/>
 			</div>
 		);
 	}
