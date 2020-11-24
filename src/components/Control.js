@@ -76,7 +76,7 @@ class Control extends Component {
 		return (
 			<>
 				<div className="current">
-					Current game:
+					Level:
 					<button className="current restart" onClick={this.start}>
 						Restart
 					</button>
@@ -85,10 +85,8 @@ class Control extends Component {
 					</button>
 				</div>
 				<div className="new">
-					<select id={this.state.level} onChange={this.chooseLevel}>
-						<option disabled selected value>
-							Choose New Game Level
-						</option>
+				<select id={this.state.level} onChange={this.chooseLevel}>
+						<option disabled selected value>Select</option>
 						<option value="easy">Easy</option>
 						<option value="medium">Medium</option>
 						<option value="hard">Hard</option>

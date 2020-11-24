@@ -124,6 +124,13 @@ input[type=number] {
   color: black;
 }
 
+
+.controlBoard{
+  display: flex;
+  flex-direction:row;
+  background-color:gray;
+  width: 71vmin;
+}
 @media screen and (max-width:640px) {
   .board, .rules {
     height: 95vmin;
@@ -140,6 +147,12 @@ input[type=number] {
     text-align: center; 
     outline: none;
     font-size: 7vw;
+  }
+  .controlBoard{
+    display: flex;
+    flex-direction:row;
+    background-color:gray;
+    width: 97vmin;
   }
 }
 

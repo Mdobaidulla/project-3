@@ -58,13 +58,6 @@ class App extends Component {
 				</header>
 				<section>	
 				<br></br>
-				 <div className="gameBoard">
-					<Board
-						setDefaultBoard={this.setDefaultBoard}
-						boxes={this.state.defaultBoard}
-						solutionBoard={this.state.solutionBoard}
-					/>
-			    </div>
 				<div className="controlBoard">
 					<Control />
 					{this.state.defaultBoard.length > 0 && (
@@ -74,6 +67,17 @@ class App extends Component {
 						/>
 					)}
 				{" "}
+				</div>
+				
+				 <div className="gameBoard">
+					<Board
+						setDefaultBoard={this.setDefaultBoard}
+						boxes={this.state.defaultBoard}
+						solutionBoard={this.state.solutionBoard}
+					/>
+			    </div>
+	
+				<div>
 				<Rules />
 				</div>
 				</section>
