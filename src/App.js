@@ -5,7 +5,7 @@ import Board from "./components/Board";
 import Control from "./components/Control";
 import Rules from "./components/Rules";
 import Footer from "./components/Footer";
-import {Route, Link} from 'react-router-dom';
+import {Route} from 'react-router-dom';
 
 import SolutionBoard from "./components/SolutionBoard";
 class App extends Component {
@@ -15,6 +15,7 @@ class App extends Component {
 			defaultBoard: [],
 			board: {},
 			solutionBoard: [],
+			levels: 'easy',
 		};
 	}
 
@@ -38,7 +39,7 @@ class App extends Component {
       solutionBoard: transformSolution 
     });
   };
-  
+
   // Function to transform input array so each nested array represents a box instead of a row
   transformBoard = (array) => {
     let transformedArray = [];
@@ -50,8 +51,8 @@ class App extends Component {
      }
      return transformedArray;
   }
-
 	render() {
+		console.log(this.state.level);
 		return (
 			<div className="fullApp">
 			    <header>
@@ -61,6 +62,7 @@ class App extends Component {
 				
 				<div className="controlBoard">
 					<Control />
+
 					{this.state.defaultBoard.length > 0 && (
 						<SolutionBoard
 							setSolutionBoard={this.setSolutionBoard}
@@ -70,17 +72,18 @@ class App extends Component {
 				{" "}
 				</div>
 				<br></br>
-				
-				 <div className="gameBoard">
+	
+				<div> 
+				<Route path='/' exact render = { ()=>{
+				return	<div className="gameBoard">
 					<Board
 						setDefaultBoard={this.setDefaultBoard}
 						boxes={this.state.defaultBoard}
 						solutionBoard={this.state.solutionBoard}
 					/>
 			    </div>
-	
-				<div> 
-				<Route path='/rules' component ={Rules} />
+				}} />
+				<Route path='/rules' exact component ={Rules} />
 				</div>
 				</section>
 				<footer>

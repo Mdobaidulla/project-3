@@ -8,14 +8,16 @@ class Control extends Component {
 			seconds: 0,
 			minutes: 0,
 			run: false,
-            level: "",
+            level: "easy",
 		   // stop: "",
+		   isDisable:false,
 		};
 		this.counter = this.counter.bind(this);
 		this.count = this.count.bind(this);
 	}
 	componentDidMount() {
 		// this.count();
+		//this.props.setDefaultBoard(response.data.board, response.data);
 	}
 
 	start = () => {
@@ -65,12 +67,7 @@ class Control extends Component {
         clearInterval(this.timer)
 	};
 
-	// componentWillUnmount() {
-	// 	clearInterval(this.state.countStart);
-	// }
-
 	chooseLevel = (event) => {
-		console.log(event.target.value);
 		this.setState({
 			level: event.target.value,
 		});
@@ -83,9 +80,10 @@ class Control extends Component {
 					<span className="hide">Current Level: &nbsp;&nbsp;&nbsp;</span><select name={this.state.level} id={this.state.level} onChange={this.chooseLevel}>
 						<option >Select</option>
 						<option value="easy">Easy</option>
-						<option value="medium">Medium</option>
-						<option value="hard">Hard</option>
-						<option value="random">Random</option>
+						<option value="medium" >Medium</option>
+						<option value="medium" disabled={!this.state.isDisable}>Medium</option>
+						<option value="hard" disabled>Hard</option>
+						<option value="random" disabled>Random</option>
 					</select>
 					</span>
 				
@@ -95,6 +93,10 @@ class Control extends Component {
 				
 					<button  onClick={this.reset}>
 						Solve
+					</button>
+
+					<button >
+					<Link to='/'>Game</Link>
 					</button>
 			        <button >
 					<Link to='/rules'>Help</Link>
