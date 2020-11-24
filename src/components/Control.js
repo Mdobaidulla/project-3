@@ -1,20 +1,21 @@
 import React, { Component } from "react";
+import Select from "react-select";
 
 class Control extends Component {
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
 		this.state = {
 			seconds: 0,
 			minutes: 0,
 			run: false,
-            level: "",
-           // stop: "",
+			level: props.level,
+			// stop: "",
 		};
 		this.counter = this.counter.bind(this);
 		this.count = this.count.bind(this);
 	}
 	componentDidMount() {
-		// this.count();
+		//  this.chooseLevel("easy");
 	}
 
 	start = () => {
@@ -26,7 +27,7 @@ class Control extends Component {
 	};
 
 	count = () => {
-	this.timer = setInterval(() => {
+		this.timer = setInterval(() => {
 			this.counter();
 		}, 1000);
 	};
@@ -56,23 +57,24 @@ class Control extends Component {
 	};
 
 	reset = (e) => {
-        console.log("Game reset");
-       
-        clearInterval(this.timer)
+		console.log("Game reset");
+
+		clearInterval(this.timer);
 	};
 
-	// componentWillUnmount() {
-	// 	clearInterval(this.state.countStart);
-	// }
+	componentWillUnmount() {
+		clearInterval(this.state.countStart);
+	}
 
-	chooseLevel = (event) => {
-		console.log(event.target.value);
-		this.setState({
-			level: event.target.value,
-		});
-	};
 
 	render() {
+        // console.log("Control level: ", this.state.level);
+        const addZero = () =>{
+            if(this.state.seconds<10){
+                return "0"
+            }
+            else {return ""}
+        }
 		return (
 			<>
 				<div className="current">
@@ -84,18 +86,9 @@ class Control extends Component {
 						Solve
 					</button>
 				</div>
-				<div className="new">
-					<select id={this.state.level} onChange={this.chooseLevel}>
-						<option disabled selected value>
-							Choose New Game Level
-						</option>
-						<option value="easy">Easy</option>
-						<option value="medium">Medium</option>
-						<option value="hard">Hard</option>
-						<option value="random">Random</option>
-					</select>
-				</div>
-				Timer: {this.state.minutes}:{this.state.seconds}
+				
+				Control selected value is : {this.state.level}. Timer: {this.state.minutes}:{addZero()}
+				{this.state.seconds}
 			</>
 		);
 	}
