@@ -9,7 +9,7 @@ class Control extends Component {
 			minutes: 0,
 			level: props.level,
 			run: false,
-		   medium:true,
+		   medium:false,
 		   hard: false,
 		   random: false,
 			

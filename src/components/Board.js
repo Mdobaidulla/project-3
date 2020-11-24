@@ -3,14 +3,13 @@ import Box from "./Box";
 import { getBoardNumber } from "../apis/Api";
 
 class Board extends Component {
+    
     componentDidMount(){
         /**
          * Calling the API GET call and passing the value 
          * into App.js through setDefaultBoard method
          */
-    let thisLevel = this.props.level;
-    console.log("This board level", thisLevel);
-      getBoardNumber('board','easy')
+      getBoardNumber('board',this.state.level)
       .then((response) =>{
         this.props.setDefaultBoard(response.data.board, response.data);
         this.setState({
@@ -24,15 +23,23 @@ class Board extends Component {
           console.log(`API ERROR:`, error);
       })
     }; 
+
+
+
     constructor(props) {
         super(props);
         this.state = {
           updatedBoard: [],
           isSolved: false,
+          level:this.props.level,
         }
       } 
 
     render() {
+
+        
+        console.log(this.state.level);
+
         const boxe = this.props.boxes.map((box, index) => {
             return <Box box={box} key={index} boxID={index} updateBoard={this.updateBoard} solutionBox={this.props.solutionBoard[index]} isSolved={this.state.isSolved}/>
         })
