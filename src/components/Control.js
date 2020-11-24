@@ -10,7 +10,9 @@ class Control extends Component {
 			run: false,
             level: "easy",
 		   // stop: "",
-		   isDisable:false,
+		   medium:false,
+		   hard: false,
+		   random: false,
 		};
 		this.counter = this.counter.bind(this);
 		this.count = this.count.bind(this);
@@ -72,18 +74,22 @@ class Control extends Component {
 			level: event.target.value,
 		});
 	};
+	changeLevel = () => {
+		this.setState=({
+       
+		})
+	}
 
 	render() {
 		return (
 			<>
-			<span>
-					<span className="hide">Current Level: &nbsp;&nbsp;&nbsp;</span><select name={this.state.level} id={this.state.level} onChange={this.chooseLevel}>
-						<option >Select</option>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>
+			<span className="hide">Current Level: &nbsp;&nbsp;&nbsp;</span><select name={this.state.level} id={this.state.level} onChange={this.chooseLevel}>
+				
 						<option value="easy">Easy</option>
-						<option value="medium" >Medium</option>
-						<option value="medium" disabled={!this.state.isDisable}>Medium</option>
-						<option value="hard" disabled>Hard</option>
-						<option value="random" disabled>Random</option>
+						<option value="medium" disabled={!this.state.medium}>Medium</option>
+						<option value="hard" disabled={!this.state.hard}>Hard</option>
+						<option value="random" disabled={!this.state.random}>Random</option>
 					</select>
 					</span>
 				
@@ -101,9 +107,9 @@ class Control extends Component {
 			        <button >
 					<Link to='/rules'>Help</Link>
 					</button>
-				Timer:&nbsp;
+					<span className="hide">Timer:</span>&nbsp;
 				 {(this.state.minutes<10) ? `0${this.state.minutes}` : this.state.minutes }: 
-				{(this.state.seconds<10) ? `0${this.state.seconds}` : this.state.seconds }
+				{(this.state.seconds<10) ? `0${this.state.seconds}` : this.state.seconds }&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			</>
 		);
 	

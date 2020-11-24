@@ -154,7 +154,7 @@ input[type=number] {
     display: flex;
     flex-direction:row;
     background-color:#ff7801ec;
-    width: 100vmin;
+    width: 99vmin;
    
   }
   .hide{
