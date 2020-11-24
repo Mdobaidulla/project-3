@@ -9,7 +9,6 @@ class Control extends Component {
 			minutes: 20,
 			level: props.level,
 			run: false,
-			level: "easy",
 		   // stop: "",
 		   medium:true,
 		   hard: false,
@@ -102,11 +101,9 @@ class Control extends Component {
 					<button onClick={this.start}>
 						Restart
 					</button>
-				
 					<button  onClick={this.stop}>
 						Solve
 					</button>
-
 					<button >
 					<Link to='/'>Game</Link>
 					</button>
