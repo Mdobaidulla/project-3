@@ -58,7 +58,7 @@ class Board extends Component {
 
         // Check if the addition of the new input solved the board
         let isSolved = this.isSolved(updatedBoard, solutionBoard);
-        this.props.showModal();
+
         if (isSolved)
         {
             console.log(`Congratulations! You solved the puzzle!`);

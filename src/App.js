@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import Board from "./components/Board";
 import Control from "./components/Control";
-import Modal from "./components/Modal";
+import CustomModal from './components/CustomModal'
 
 import SolutionBoard from "./components/SolutionBoard";
 class App extends Component {
@@ -73,7 +73,7 @@ class App extends Component {
 						board={this.state.board}
 					/>
 				)}
-				<Modal onClose={this.showModal} show={this.state.show}/>
+				<CustomModal />
 			</div>
 		);
 	}
