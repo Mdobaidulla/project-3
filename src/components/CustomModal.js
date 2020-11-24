@@ -38,7 +38,7 @@ class CustomModal extends Component {
     render () {
      return (
             <div>
-                <button onClick={this.openModal}>Win Message</button>
+                {/* DEBUG - <button onClick={this.openModal}>Win Message</button> */}
                 <Modal className="modal" isOpen={this.props.open} onRequestClose={this.props.closeModal}>
                     <h2>Congratulations!</h2> 
                     <div className="content">You solved the puzzle!</div>
