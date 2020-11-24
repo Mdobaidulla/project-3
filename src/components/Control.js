@@ -18,8 +18,6 @@ class Control extends Component {
 		this.count = this.count.bind(this);
 	}
 	componentDidMount() {
-		// this.count();
-		//this.props.setDefaultBoard(response.data.board, response.data);
 	}
 
 	start = () => {
