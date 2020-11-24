@@ -1,8 +1,12 @@
 import React, { Component } from "react";
 import "./App.css";
+import "./Footer.css";
 import Board from "./components/Board";
 import Control from "./components/Control";
 import CustomModal from './components/CustomModal'
+import Rules from "./components/Rules";
+import Footer from "./components/Footer";
+import {Route, Link} from 'react-router-dom';
 import SolutionBoard from "./components/SolutionBoard";
 import $ from 'jquery';
 
@@ -64,24 +68,42 @@ class App extends Component {
 
 	render() {
 		return (
-			<div className="App">
+			<div className="fullApp">
+			    <header>
 				<h1 align="center">Sublocu</h1>
-
-				<Board
-					setDefaultBoard={this.setDefaultBoard}
-					boxes={this.state.defaultBoard}
-					solutionBoard={this.state.solutionBoard}
-					openModal = {this.openModal}
-				/>
-				<Control />
-				{this.state.defaultBoard.length > 0 && (
-					<SolutionBoard
-						setSolutionBoard={this.setSolutionBoard}
-						board={this.state.board}
+				</header>
+				<section>	
+				
+				<div className="controlBoard">
+					<Control />
+					{this.state.defaultBoard.length > 0 && (
+						<SolutionBoard
+							setSolutionBoard={this.setSolutionBoard}
+							board={this.state.board}
+						/>
+					)}
+				{" "}
+				</div>
+				<br></br>
+				
+				 <div className="gameBoard">
+					<Board
+						setDefaultBoard={this.setDefaultBoard}
+						boxes={this.state.defaultBoard}
+						solutionBoard={this.state.solutionBoard}
+						openModal = {this.openModal}
 					/>
-				)}
+			    </div>
+	
+				<div> 
+				<Route path='/rules' component ={Rules} />
+				</div>
+				</section>
+				<footer>
+				<Footer />
+				</footer>
 				<CustomModal open={this.state.open} close={this.closeModal}/>
-			</div>
+			 </div>
 		);
 	}
 }
