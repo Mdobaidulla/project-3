@@ -1,33 +1,36 @@
 import React, { Component } from "react";
-import Timer from "./components/Timer";
-import Time from "./components/Time";
+import Time from "./Time";
 
 class Timer extends Component {
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
 		this.state = {
 			seconds: 0,
 			minutes: 0,
+			inProgress: "false",
 		};
 		this.counter = this.counter.bind(this);
 		this.count = this.count.bind(this);
+		this.start = this.start.bind(this);
+		this.stop = this.stop.bind(this);
 	}
 	componentDidMount() {
 		// this.count();
 	}
 
 	start = () => {
-		console.log("Started");
-		this.setState({
-			run: true,
-		});
-		this.count();
+        console.log("Timer started");
+        this.setState({
+            inProgress: true,
+        });
+        this.count();
 	};
 
 	count = () => {
-	this.timer = setInterval(() => {
-			this.counter();
-		}, 1000);
+		
+			this.timer = setInterval(() => {
+				this.counter();
+            }, 1000);		
 	};
 
 	counter = () => {
@@ -40,31 +43,26 @@ class Timer extends Component {
 				seconds: 0,
 			});
 		}
-		// this.displaySeconds();
 	};
 
-	stop = (flag) => {
+	stop = () => {
 		clearInterval(() => {
-			this.count();
+			this.count(this.timer);
 		});
 	};
 
-	reset = (e) => {
-        console.log("Game reset");
-       
-        clearInterval(this.timer)
-	};
-
-	// componentWillUnmount() {
-	// 	clearInterval(this.state.countStart);
-	// }
+	componentWillUnmount() {
+		clearInterval(this.timer);
+	}
 
 	render() {
+        
+        console.log("Call to timer works");
+		
+
 		return (
 			<>
-				<Time 
-                minutes={this.state.minutes}
-                seconds={this.state.seconds}/>
+				<Time minutes={this.state.minutes} seconds={this.state.seconds} />
 			</>
 		);
 	}

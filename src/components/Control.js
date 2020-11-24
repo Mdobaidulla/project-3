@@ -1,76 +1,59 @@
 import React, { Component } from "react";
-import {Link} from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 class Control extends Component {
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
 		this.state = {
 			seconds: 0,
-			minutes: 0,
+			minutes: 20,
+			level: props.level,
 			run: false,
-            level: "easy",
+			level: "easy",
 		   // stop: "",
 		   medium:true,
 		   hard: false,
 		   random: false,
+			
 		};
 		this.counter = this.counter.bind(this);
 		this.count = this.count.bind(this);
+		this.chooseLevel = this.chooseLevel.bind(this);
 	}
-	componentDidMount() {
-	}
+	componentDidMount() {}
 
 	start = () => {
-		console.log("Started");
-		this.setState({
-			run: true,
-		});
 		this.count();
 	};
 
 	count = () => {
-	this.timer = setInterval(() => {
+		this.timer = setInterval(() => {
 			this.counter();
 		}, 1000);
 	};
 
 	counter = () => {
-		this.setState({
-			
-			seconds:this.state.seconds + 1,
-		});
-		
-		if (this.state.seconds === 60) {
-			
+		if (this.state.seconds === 0) {
 			this.setState({
-				minutes: this.state.minutes + 1,
-				seconds: 0,
+				minutes: this.state.minutes - 1,
+				seconds: 60,
 			});
 		}
-		// this.displaySeconds();
-	};
-
-	displayTime = () => {
-		console.log(this.state.seconds);
-		return this.state.seconds;
-	};
-
-	stop = (flag) => {
-		clearInterval(() => {
-			this.count();
+		this.setState({
+			seconds: this.state.seconds - 1,
 		});
+
+		if (this.state.seconds === 0 && this.state.minutes === 0) {
+			this.stop();
+		}
 	};
 
-	reset = (e) => {
-        console.log("Game reset");
-       
-        clearInterval(this.timer)
+	stop = (e) => {
+		clearInterval(this.timer);
 	};
 
 	chooseLevel = (event) => {
-		this.setState({
-			level: event.target.value,
-		});
+		this.props.setLevel(event.target.value);
 	};
 	changeLevel = () => {
 		this.setState=({
@@ -78,7 +61,17 @@ class Control extends Component {
 		})
 	}
 
+	componentWillUnmount() {
+		clearInterval(this.state.countStart);
+	}
 	render() {
+		let timerColor;
+		if (this.state.seconds <= 10 && this.state.minutes===0) {
+			timerColor = "timer-warning";
+		}
+		if (this.state.seconds <= 5 && this.state.minutes===0) {
+			timerColor = "timer-critical";
+		}
 		return (
 			<>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>
@@ -89,6 +82,7 @@ class Control extends Component {
 						<option value="hard" disabled={!this.state.hard}>Hard</option>
 						<option value="random" disabled={!this.state.random}>Random</option>
 					</select>
+
 					</span>
 				
 					<button onClick={this.start}>
@@ -110,7 +104,6 @@ class Control extends Component {
 				{(this.state.seconds<10) ? `0${this.state.seconds}` : this.state.seconds }&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			</>
 		);
-	
 	}
 }
 
