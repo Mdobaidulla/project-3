@@ -57,7 +57,7 @@ class App extends Component {
 				<h1 align="center">Sublocu</h1>
 				</header>
 				<section>	
-				<br></br>
+				
 				<div className="controlBoard">
 					<Control />
 					{this.state.defaultBoard.length > 0 && (
@@ -68,6 +68,7 @@ class App extends Component {
 					)}
 				{" "}
 				</div>
+				<br></br>
 				
 				 <div className="gameBoard">
 					<Board

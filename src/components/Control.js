@@ -75,25 +75,37 @@ class Control extends Component {
 	render() {
 		return (
 			<>
-				<div className="current">
-					Level:
-					<button className="current restart" onClick={this.start}>
-						Restart
-					</button>
-					<button className="current end" onClick={this.reset}>
-						Solve
-					</button>
-				</div>
-				<div className="new">
-				<select id={this.state.level} onChange={this.chooseLevel}>
-						<option disabled selected value>Select</option>
+			<span>
+					<span className="hide">Current Level: &nbsp;&nbsp;&nbsp;</span><select name={this.state.level} id={this.state.level} onChange={this.chooseLevel}>
+						<option >Select</option>
 						<option value="easy">Easy</option>
 						<option value="medium">Medium</option>
 						<option value="hard">Hard</option>
 						<option value="random">Random</option>
 					</select>
-				</div>
+					</span>
+				
+					<button onClick={this.start}>
+						Restart
+					</button>
+				
+					<button  onClick={this.reset}>
+						Solve
+					</button>
+			
+			
+				{/* <select id={this.state.level} onChange={this.chooseLevel}>
+						<option disabled selected value>Select</option>
+						<option value="easy">Easy</option>
+						<option value="medium">Medium</option>
+						<option value="hard">Hard</option>
+						<option value="random">Random</option>
+					</select> */}
+			        <button  >
+						Help
+					</button>
 				Timer: {this.state.minutes}:{this.state.seconds}
+				
 			</>
 		);
 	}
