@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import "./App.css";
+import "./Footer.css";
 import Board from "./components/Board";
 import Control from "./components/Control";
 import Rules from "./components/Rules";
+import Footer from "./components/Footer";
 
 import SolutionBoard from "./components/SolutionBoard";
 class App extends Component {
@@ -50,15 +52,13 @@ class App extends Component {
 
 	render() {
 		return (
-			<>
-				<div className="App">
-					<h1 align="center">Sublocu</h1>
-
-					<Board
-						setDefaultBoard={this.setDefaultBoard}
-						boxes={this.state.defaultBoard}
-						solutionBoard={this.state.solutionBoard}
-					/>
+			<div className="fullApp">
+			    <header>
+				<h1 align="center">Sublocu</h1>
+				</header>
+				<section>	
+				<br></br>
+				<div className="controlBoard">
 					<Control />
 					{this.state.defaultBoard.length > 0 && (
 						<SolutionBoard
@@ -66,9 +66,26 @@ class App extends Component {
 							board={this.state.board}
 						/>
 					)}
-				</div>{" "}
+				{" "}
+				</div>
+				
+				 <div className="gameBoard">
+					<Board
+						setDefaultBoard={this.setDefaultBoard}
+						boxes={this.state.defaultBoard}
+						solutionBoard={this.state.solutionBoard}
+					/>
+			    </div>
+	
+				<div>
 				<Rules />
-			</>
+				</div>
+				</section>
+				<footer>
+				<Footer />
+				</footer>
+				
+			 </div>
 		);
 	}
 }

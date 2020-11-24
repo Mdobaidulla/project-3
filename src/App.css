@@ -1,11 +1,37 @@
-body {
-  display: flex;
+.fullApp {
+  margin: 0px auto;
+  max-width:900px;
+  text-align:center;
+  min-height: 100vh;
+  display:flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  margin: 0;
 }
 
+header{
+  padding:2px;
+  height:80px;
+  /* background-color: #028779; */
+  background-color: #ff7801ec;
+  color:#FFFFFF;
+  width:100%;
+}
+section{
+  flex-grow:1;
+  background-color:#f4efef;
+  width:100%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+
+}
+footer{
+  background:black;
+  color:#FFFFFF;
+  width:100%;
+  height:80px;
+}
 .new, .current{
   display: flex;
   justify-content: center;
@@ -39,8 +65,8 @@ background-color: hotpink;
 }
 
 .board, .rules {
-  height: 50vmin;
-  width: 50vmin;
+  height: 70vmin;
+  width: 70vmin;
   outline: solid 3px black;
   margin: 4px 2px;
 }
@@ -76,7 +102,6 @@ background-color: hotpink;
   outline: none;
   font-size: 2vw;
 }
-
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -100,5 +125,35 @@ input[type=number] {
 }
 
 
+.controlBoard{
+  display: flex;
+  flex-direction:row;
+  background-color:gray;
+  width: 71vmin;
+}
+@media screen and (max-width:640px) {
+  .board, .rules {
+    height: 95vmin;
+    width: 95vmin;
+    outline: solid 3px black;
+    margin: 4px 2px;
+  }
+  .square input { 
+    height: 100%; 
+    width: 100%; 
+    border: 0; 
+    margin: 0; 
+    padding: 0; 
+    text-align: center; 
+    outline: none;
+    font-size: 7vw;
+  }
+  .controlBoard{
+    display: flex;
+    flex-direction:row;
+    background-color:gray;
+    width: 97vmin;
+  }
+}
 
 
