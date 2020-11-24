@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import "./App.css";
+import "./Footer.css";
 import Board from "./components/Board";
 import Control from "./components/Control";
 import Rules from "./components/Rules";
-import Time from "./components/Time";
+import Footer from "./components/Footer";
+import {Route, Link} from 'react-router-dom';
 
 import SolutionBoard from "./components/SolutionBoard";
 class App extends Component {
@@ -55,46 +57,45 @@ class App extends Component {
 		return transformedArray;
 	};
 
-	chooseLevel = (event) => {
-		console.log(event.target.value);
-		this.setState({
-			level: event.target.value,
-		});
-	};
+	
 
 	render() {
 		return (
-			<>
-				<div className="App">
-					<h1 align="center">Sublocu</h1>
-					{<Time />}
-					Difficulty: {this.state.level}
-					<Board
-						setDefaultBoard={this.setDefaultBoard}
-						boxes={this.state.defaultBoard}
-						solutionBoard={this.state.solutionBoard}
-						level={this.state.level}
-					/>
+			<div className="fullApp">
+			    <header>
+				<h1 align="center">Sublocu</h1>
+				</header>
+				<section>	
+				
+				<div className="controlBoard">
+					<Control />
 					{this.state.defaultBoard.length > 0 && (
 						<SolutionBoard
 							setSolutionBoard={this.setSolutionBoard}
 							board={this.state.board}
 						/>
 					)}
-				</div>{" "}
-				<select id="dropdown" onChange={this.chooseLevel}>
-					<option disabled selected value>
-						Choose New Game Level
-					</option>
-					<option value="easy">Easy</option>
-					<option value="medium">Medium</option>
-					<option value="hard">Hard</option>
-					{/* {<option value="random">Random</option>} */}
-				</select>
-				App level selected is {this.state.level}
-				<Control level={this.state.level} />
-				<Rules />
-			</>
+				{" "}
+				</div>
+				<br></br>
+				
+				 <div className="gameBoard">
+					<Board
+						setDefaultBoard={this.setDefaultBoard}
+						boxes={this.state.defaultBoard}
+						solutionBoard={this.state.solutionBoard}
+					/>
+			    </div>
+	
+				<div> 
+				<Route path='/rules' component ={Rules} />
+				</div>
+				</section>
+				<footer>
+				<Footer />
+				</footer>
+				
+			 </div>
 		);
 	}
 }
