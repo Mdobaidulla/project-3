@@ -1,8 +1,6 @@
 import axios from 'axios';
-let qs = require('qs');
     const baseURI = "https://sugoku.herokuapp.com";
     const getBoardNumber=(endPoint, parameter) =>{
-        console.log('From API',parameter);
         let urlForGet = `${baseURI}/${endPoint}?difficulty=${parameter}`
         return axios.get(urlForGet);
     }
