@@ -5,6 +5,7 @@ import Board from "./components/Board";
 import Control from "./components/Control";
 import Rules from "./components/Rules";
 import Footer from "./components/Footer";
+import {Route, Link} from 'react-router-dom';
 
 import SolutionBoard from "./components/SolutionBoard";
 class App extends Component {
@@ -57,7 +58,7 @@ class App extends Component {
 				<h1 align="center">Sublocu</h1>
 				</header>
 				<section>	
-				<br></br>
+				
 				<div className="controlBoard">
 					<Control />
 					{this.state.defaultBoard.length > 0 && (
@@ -68,6 +69,7 @@ class App extends Component {
 					)}
 				{" "}
 				</div>
+				<br></br>
 				
 				 <div className="gameBoard">
 					<Board
@@ -77,8 +79,8 @@ class App extends Component {
 					/>
 			    </div>
 	
-				<div>
-				<Rules />
+				<div> 
+				<Route path='/rules' component ={Rules} />
 				</div>
 				</section>
 				<footer>

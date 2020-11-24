@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {Link} from 'react-router-dom';
 
 class Control extends Component {
 	constructor() {
@@ -8,7 +9,7 @@ class Control extends Component {
 			minutes: 0,
 			run: false,
             level: "",
-           // stop: "",
+		   // stop: "",
 		};
 		this.counter = this.counter.bind(this);
 		this.count = this.count.bind(this);
@@ -33,9 +34,12 @@ class Control extends Component {
 
 	counter = () => {
 		this.setState({
-			seconds: this.state.seconds + 1,
+			
+			seconds:this.state.seconds + 1,
 		});
+		
 		if (this.state.seconds === 60) {
+			
 			this.setState({
 				minutes: this.state.minutes + 1,
 				seconds: 0,
@@ -75,27 +79,32 @@ class Control extends Component {
 	render() {
 		return (
 			<>
-				<div className="current">
-					Level:
-					<button className="current restart" onClick={this.start}>
-						Restart
-					</button>
-					<button className="current end" onClick={this.reset}>
-						Solve
-					</button>
-				</div>
-				<div className="new">
-				<select id={this.state.level} onChange={this.chooseLevel}>
-						<option disabled selected value>Select</option>
+			<span>
+					<span className="hide">Current Level: &nbsp;&nbsp;&nbsp;</span><select name={this.state.level} id={this.state.level} onChange={this.chooseLevel}>
+						<option >Select</option>
 						<option value="easy">Easy</option>
 						<option value="medium">Medium</option>
 						<option value="hard">Hard</option>
 						<option value="random">Random</option>
 					</select>
-				</div>
-				Timer: {this.state.minutes}:{this.state.seconds}
+					</span>
+				
+					<button onClick={this.start}>
+						Restart
+					</button>
+				
+					<button  onClick={this.reset}>
+						Solve
+					</button>
+			        <button >
+					<Link to='/rules'>Help</Link>
+					</button>
+				Timer:&nbsp;
+				 {(this.state.minutes<10) ? `0${this.state.minutes}` : this.state.minutes }: 
+				{(this.state.seconds<10) ? `0${this.state.seconds}` : this.state.seconds }
 			</>
 		);
+	
 	}
 }
 
