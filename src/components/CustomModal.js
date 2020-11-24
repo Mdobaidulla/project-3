@@ -43,7 +43,7 @@ class CustomModal extends Component {
                 {/* DEBUG - <button onClick={this.openModal}>Win Message</button> */}
                 <Modal className="modal" isOpen={this.props.open} onRequestClose={this.props.closeModal}>
                     <h2>Congratulations!</h2> 
-                    <div className="content">You solved the puzzle!</div>
+                    <div className="content">You solved the easy puzzle! Why don't you try a medium puzzle?</div>
                     <div className="actions">
                     <button onClick={this.props.close} className="toggle-button">Close</button>
                     </div>                   
