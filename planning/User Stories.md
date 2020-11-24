@@ -14,13 +14,13 @@
 
 - [x] As a user, I do not want to change the value of a pre-populated box as that will alter the game itself.
 
-- [ ] As a user, I want to be notified when I have solved the puzzle, so that I can know that the game has ended.
+- [x] As a user, I want to be notified when I have solved the puzzle, so that I can know that the game has ended.
 
-- [ ] As a user, I want the ability to click a button to end the current game so that I can start a new one.
+- [x] As a user, I want the ability to click a button to end the current game so that I can start a new one.
 
 - [ ] As a user, which will show the solution to the puzzle even if I didn't solve it in order to better understand where each number should have been placed as well as end the current game.
 
-- [ ] As a user, I want to be able to view the rules, so that I understand how to solve the puzzle.
+- [x] As a user, I want to be able to view the rules, so that I understand how to solve the puzzle.
 
 - [ ] As a user, I want the game to keep stats of the number of times I played in total and the number of times I won in each difficulty in order to better challenge myself.
 
@@ -30,6 +30,6 @@
 
 - [ ] As a user, I want the game to keep track of the number of incorrect attempts during a game so that I can better track my abilities.
 
-- [ ] As a user, I want the board to keep a running timer on the game so that I know how much time I have spent playing that game.
+- [x] As a user, I want the board to keep a running timer on the game so that I know how much time I have remaining for that game.
 
 - [ ] As a user, I want the ability to restart a game so that I can try again if I make too many mistakes.

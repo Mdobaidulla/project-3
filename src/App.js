@@ -45,9 +45,10 @@ class App extends Component {
 
 	setLevel = (level) => {
 		this.setState({
-			level: level,
+			level: this.props.level,
 		});
-	};
+  };
+  
 
 	// Function to transform input array so each nested array represents a box instead of a row
 	transformBoard = (array) => {
@@ -81,7 +82,7 @@ class App extends Component {
     }
 
 	render() {
-     console.log("App level", this.state.level)
+     //console.log("App level", this.state.level)
 		return (
 			<div className="fullApp">
 

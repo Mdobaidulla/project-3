@@ -20,7 +20,12 @@ class Control extends Component {
 		this.count = this.count.bind(this);
 		this.chooseLevel = this.chooseLevel.bind(this);
 	}
-	componentDidMount() {}
+	componentDidMount() {
+        if(this.started==='yes'){
+            this.start();
+        }
+        
+    }
 
 	start = () => {
 		this.count();
@@ -49,8 +54,17 @@ class Control extends Component {
 	};
 
 	stop = (e) => {
-		clearInterval(this.timer);
-	};
+        clearInterval(this.timer);
+        this.setState({
+            minutes: 20,
+            seconds: 0,
+        })
+        //this.props.solution();
+    };
+    
+    restart = () =>{
+        this.start();
+    }
 
 	chooseLevel = (event) => {
 		this.props.setLevel(event.target.value);
@@ -65,7 +79,7 @@ class Control extends Component {
 		clearInterval(this.state.countStart);
 	}
 	render() {
-		let timerColor;
+        let timerColor;
 		if (this.state.seconds <= 10 && this.state.minutes===0) {
 			timerColor = "timer-warning";
 		}
@@ -89,7 +103,7 @@ class Control extends Component {
 						Restart
 					</button>
 				
-					<button  onClick={this.reset}>
+					<button  onClick={this.stop}>
 						Solve
 					</button>
 
