@@ -10,7 +10,7 @@ class Control extends Component {
 			run: false,
             level: "easy",
 		   // stop: "",
-		   medium:false,
+		   medium:true,
 		   hard: false,
 		   random: false,
 		};
