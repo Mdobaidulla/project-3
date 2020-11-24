@@ -8,7 +8,7 @@ class Board extends Component {
 		 * Calling the API GET call and passing the value
 		 * into App.js through setDefaultBoard method
 		 */
-		let thisLevel = this.props.level;
+		let thisLevel = this.getThisLevel();
 		console.log("This board level", thisLevel);
 		getBoardNumber("board", 'easy')
 			.then((response) => {
@@ -27,9 +27,14 @@ class Board extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			updatedBoard: [],
+            updatedBoard: [],
+            level: "easy",
 		};
-	}
+    }
+    
+    getThisLevel(){
+        return this.props.level
+    }
 
 	render() {
 		const boxe = this.props.boxes.map((box, index) => {

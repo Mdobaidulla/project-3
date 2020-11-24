@@ -7,13 +7,19 @@ class Control extends Component {
 		this.state = {
 			seconds: 0,
 			minutes: 20,
-			level: props.level,
+            level: props.level,
+            started: "yes",
 		};
 		this.counter = this.counter.bind(this);
 		this.count = this.count.bind(this);
 		this.chooseLevel = this.chooseLevel.bind(this);
 	}
-	componentDidMount() {}
+	componentDidMount() {
+        if(this.started==='yes'){
+            this.start();
+        }
+        
+    }
 
 	start = () => {
 		this.count();
@@ -42,8 +48,17 @@ class Control extends Component {
 	};
 
 	stop = (e) => {
-		clearInterval(this.timer);
-	};
+        clearInterval(this.timer);
+        this.setState({
+            minutes: 20,
+            seconds: 0,
+        })
+        //this.props.solution();
+    };
+    
+    restart = () =>{
+        this.start();
+    }
 
 	chooseLevel = (event) => {
 		this.props.setLevel(event.target.value);
@@ -53,7 +68,7 @@ class Control extends Component {
 		clearInterval(this.state.countStart);
 	}
 	render() {
-		let timerColor;
+        let timerColor;
 		if (this.state.seconds <= 10 && this.state.minutes===0) {
 			timerColor = "timer-warning";
 		}
@@ -62,7 +77,7 @@ class Control extends Component {
 		}
 		return (
 			<>
-				<span>
+				<span >
 					<span className="hide">Current Level: &nbsp;&nbsp;&nbsp;</span>
 					<select
 						name={this.state.level}
@@ -76,7 +91,7 @@ class Control extends Component {
 						<option value="random">Random</option>
 					</select>
 				</span>
-				<button onClick={this.start}>Restart</button>
+				<button onClick={this.restart}>Restart</button>
 				<button onClick={this.stop}>Solve</button>
 				<button>
 					<Link to="/rules">Help</Link>

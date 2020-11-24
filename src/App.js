@@ -15,7 +15,7 @@ class App extends Component {
 			defaultBoard: [],
 			board: {},
 			solutionBoard: [],
-			level: "",
+			level: "easy",
 		};
 	}
 
@@ -42,9 +42,10 @@ class App extends Component {
 
 	setLevel = (level) => {
 		this.setState({
-			level: level,
+			level: this.props.level,
 		});
-	};
+  };
+  
 
 	// Function to transform input array so each nested array represents a box instead of a row
 	transformBoard = (array) => {
@@ -64,7 +65,7 @@ class App extends Component {
 	};
 
 	render() {
-     console.log("App level", this.state.level)
+     //console.log("App level", this.state.level)
 		return (
 			<div className="fullApp">
 				<header>
@@ -72,7 +73,10 @@ class App extends Component {
 				</header>
 				<section>
 					<div className="controlBoard">
-						<Control setLevel={this.setLevel} />
+            <Control setLevel={this.setLevel}
+            solution={this.props.solutionBoard} 
+            start = "true"
+            />
 						{this.state.defaultBoard.length > 0 && (
 							<SolutionBoard
 								setSolutionBoard={this.setSolutionBoard}
