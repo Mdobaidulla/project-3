@@ -113,6 +113,8 @@ class App extends Component {
 						setDefaultBoard={this.setDefaultBoard}
 						boxes={this.state.defaultBoard}
 						solutionBoard={this.state.solutionBoard}
+						level={this.setLevel}
+						openModal = {this.openModal}
 					/>
 			    </div>
 				}} />
