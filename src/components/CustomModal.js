@@ -14,6 +14,7 @@ class CustomModal extends Component {
         }
     }
 
+    // Open modal popup
     openModal () { 
         this.setState({
             open: true
@@ -23,6 +24,7 @@ class CustomModal extends Component {
         });
     }
 
+    // Close modal popup
     closeModal () {
         this.setState({
             open: false

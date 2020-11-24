@@ -8,7 +8,6 @@ import Rules from "./components/Rules";
 import Footer from "./components/Footer";
 import {Route, Link} from 'react-router-dom';
 import SolutionBoard from "./components/SolutionBoard";
-import $ from 'jquery';
 
 class App extends Component {
 	constructor(props) {
@@ -54,12 +53,14 @@ class App extends Component {
      return transformedArray;
   }
 
+  // Opens the modal popup when the user wins
   openModal = () => { 
 	this.setState({
 			open: true
 		});
 	}
 
+	// Closes the modal popup when the user presses the close button
 	closeModal = () => {
         this.setState({
             open: false
