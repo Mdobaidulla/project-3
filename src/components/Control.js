@@ -5,12 +5,10 @@ class Control extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			seconds: 0,
-			minutes: 20,
+			seconds: 15,
+			minutes: 0,
 			level: props.level,
 			run: false,
-			level: "easy",
-		   // stop: "",
 		   medium:true,
 		   hard: false,
 		   random: false,
@@ -80,10 +78,10 @@ class Control extends Component {
 	}
 	render() {
         let timerColor;
-		if (this.state.seconds <= 10 && this.state.minutes===0) {
+		if (this.state.seconds <= 0 && this.state.minutes===10) {
 			timerColor = "timer-warning";
 		}
-		if (this.state.seconds <= 5 && this.state.minutes===0) {
+		if (this.state.seconds <= 0 && this.state.minutes===3) {
 			timerColor = "timer-critical";
 		}
 		return (
@@ -114,8 +112,9 @@ class Control extends Component {
 					<Link to='/rules'>Help</Link>
 					</button>
 					<span className="hide">Timer:</span>&nbsp;
-				 {(this.state.minutes<10) ? `0${this.state.minutes}` : this.state.minutes }: 
+				 <span className={timerColor}>{(this.state.minutes<10) ? `0${this.state.minutes}` : this.state.minutes }: 
 				{(this.state.seconds<10) ? `0${this.state.seconds}` : this.state.seconds }&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </span>
 			</>
 		);
 	}
