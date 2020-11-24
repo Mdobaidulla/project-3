@@ -6,7 +6,7 @@ import Control from "./components/Control";
 import CustomModal from './components/CustomModal'
 import Rules from "./components/Rules";
 import Footer from "./components/Footer";
-import { Route, Link } from "react-router-dom";
+import {Route} from 'react-router-dom';
 
 import SolutionBoard from "./components/SolutionBoard";
 
@@ -89,38 +89,32 @@ class App extends Component {
 				<header>
 					<h1 align="center">Sublocu</h1>
 				</header>
+				<section>	
+				<div className="controlBoard">
+					<Control setLevel={this.setLevel}/>
 
-				{/* Board Section */}
-				<section>
-					{/* Controls */}
-					<div className="controlBoard">
-						<Control setLevel={this.setLevel} />
-						{this.state.defaultBoard.length > 0 && (
-							<SolutionBoard
-								setSolutionBoard={this.setSolutionBoard}
-								board={this.state.board}
-							/>
-						)} {" "}
-					</div>
-
-					<br></br>
-
-					{/* Game Board */}
-					<div className="gameBoard">
-						<Board 	setDefaultBoard={this.setDefaultBoard}
-								boxes={this.state.defaultBoard}
-								solutionBoard={this.state.solutionBoard}
-								level={this.setLevel}
-								openModal = {this.openModal}
-						/> {" "}
-					</div>
-				
-					<br></br>
-
-					{/* Rules Route */}
-					<div> 
-					<Route path='/rules' component ={Rules} />
-					</div>
+					{this.state.defaultBoard.length > 0 && (
+						<SolutionBoard
+							setSolutionBoard={this.setSolutionBoard}
+							board={this.state.board}
+						/>
+					)}
+				{" "}
+				</div>
+				<br></br>
+	
+				<div> 
+				<Route path='/' exact render = { ()=>{
+				return	<div className="gameBoard">
+					<Board
+						setDefaultBoard={this.setDefaultBoard}
+						boxes={this.state.defaultBoard}
+						solutionBoard={this.state.solutionBoard}
+					/>
+			    </div>
+				}} />
+				<Route path='/rules' exact component ={Rules} />
+				</div>
 				</section>
 
 				{/* Footer Section */}
