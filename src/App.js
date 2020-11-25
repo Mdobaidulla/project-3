@@ -83,7 +83,6 @@ class App extends Component {
 
 	render() {
 
-     console.log("App level", this.state.level)
 		return (
 			<div className="fullApp">
 

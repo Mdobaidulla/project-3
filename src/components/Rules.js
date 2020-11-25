@@ -5,9 +5,10 @@ const Rules = () => {
         <h2 align="center">Rules</h2>
         <ul>
             <li>Game starts on page load and on easy difficulty.</li>
-            <li>Click on restart to play the current game again.</li>
-            <li>Click on Solve to end current game and show game's solution.</li>
+            <li>Click on Start to have timer countdown.</li>
+            <li>Click on Pause to stop the timer.</li>
             <li>Choose difficulty to start new game.</li>
+            <li>Other difficulties unlock when games are completed.</li>
         </ul>
     </div>;
 };

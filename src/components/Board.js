@@ -16,7 +16,6 @@ class Board extends Component {
 						return arr.slice();
 					}),
 				});
-				console.log("Get request data: ", response.data);
 			})
 			.catch((error) => {
 				console.log(`API ERROR:`, error);

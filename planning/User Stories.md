@@ -34,5 +34,4 @@
 
 - [ ] As a user, I want the ability to restart a game so that I can try again if I make too many mistakes.
 
-# Future enhancements
 
