@@ -6,13 +6,12 @@ class Control extends Component {
 		super(props);
 		this.state = {
 			seconds: 0,
-			minutes: 20,
+			minutes: 20, //Default amount of time to complete the game.
 			level: props.level,
 			run: false,
-		   medium:false,
-		   hard: false,
-		   random: false,
-			
+			medium: false,  //Hidden level of difficulty unlocked when an easy level is completed.
+			hard: false,	//Hidden level of difficulty unlocked when a medium level is completed.
+			random: false,	//Hidden random level of difficulty unlocked when a hard level is completed.
 		};
 		this.counter = this.counter.bind(this);
 		this.count = this.count.bind(this);
@@ -25,7 +24,7 @@ class Control extends Component {
 	}
 
 	start = () => {
-		this.count();
+		this.count(); //Starts the countdown timer
 	};
 
 	count = () => {
@@ -35,7 +34,7 @@ class Control extends Component {
 	};
 
 	counter = () => {
-		if (this.state.seconds === 0) {
+		if (this.state.seconds === 0) { //When the timer hits 0 seconds, decrement the minutes by 1 and reset the seconds to 60.
 			this.setState({
 				minutes: this.state.minutes - 1,
 				seconds: 60,
@@ -45,30 +44,23 @@ class Control extends Component {
 			seconds: this.state.seconds - 1,
 		});
 
-		if (this.state.seconds === 0 && this.state.minutes === 0) {
+		if (this.state.seconds === 0 && this.state.minutes === 0) { //Prevents timer from counting negative
 			this.stop();
 		}
 	};
 
 	stop = (e) => {
-		clearInterval(this.timer);
-		this.setState({
-			minutes: 20,
-			seconds: 0,
-		});
-		//this.props.solution();
+		clearInterval(this.timer); //Stops the timer
 	};
 
-	restart = () => {
+	restart = () => { //Used when game is restarted
 		this.start();
 	};
 
-	chooseLevel = (event) => {
+	chooseLevel = (event) => { //Takes value of drop down and passes back to parent
 		this.props.setLevel(event.target.value);
 	};
-	changeLevel = () => {
-		this.setState = {};
-	};
+	
 
 	componentWillUnmount() {
 		clearInterval(this.state.countStart);
@@ -79,13 +71,13 @@ class Control extends Component {
 			this.state.minutes < 10 ||
 			(this.state.minutes === 10 && this.state.seconds === 0)
 		) {
-			timerColor = "timer-warning";
+			timerColor = "timer-warning"; //Changes background of timer to be yellow when time is between 3 and 10 minutes
 		}
 		if (
 			this.state.minutes < 3 ||
-			(this.state.minutes === 3 && this.state.seconds === 0)
+			(this.state.minutes === 3 && this.state.seconds === 0) 
 		) {
-			timerColor = "timer-critical";
+			timerColor = "timer-critical"; //Changes background of time to be red when time is between 0 and 3 minutes.
 		}
 
 		return (
@@ -110,8 +102,8 @@ class Control extends Component {
 						</option>
 					</select>
 				</span>
-				<button onClick={this.start}>Restart</button>
-				<button onClick={this.stop}>Solve</button>
+				<button onClick={this.start}>Start</button>
+				<button onClick={this.stop}>Pause</button>
 				<button>
 					<Link to="/">Game</Link>
 				</button>

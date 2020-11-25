@@ -19,18 +19,16 @@ class Timer extends Component {
 	}
 
 	start = () => {
-        console.log("Timer started");
-        this.setState({
-            inProgress: true,
-        });
-        this.count();
+		this.setState({
+			inProgress: true,
+		});
+		this.count();
 	};
 
 	count = () => {
-		
-			this.timer = setInterval(() => {
-				this.counter();
-            }, 1000);		
+		this.timer = setInterval(() => {
+			this.counter();
+		}, 1000);
 	};
 
 	counter = () => {
@@ -56,10 +54,6 @@ class Timer extends Component {
 	}
 
 	render() {
-        
-        console.log("Call to timer works");
-		
-
 		return (
 			<>
 				<Time minutes={this.state.minutes} seconds={this.state.seconds} />
