@@ -33,3 +33,6 @@
 - [x] As a user, I want the board to keep a running timer on the game so that I know how much time I have remaining for that game.
 
 - [ ] As a user, I want the ability to restart a game so that I can try again if I make too many mistakes.
+
+# Future enhancements
+
