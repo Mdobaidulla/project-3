@@ -18,7 +18,7 @@ class App extends Component {
 			board: {},
 			solutionBoard: [],
 			open: false,
-			level: "",
+			level: "easy",
 		};
 	}
 
@@ -45,7 +45,7 @@ class App extends Component {
 
 	setLevel = (level) => {
 		this.setState({
-			level: this.props.level,
+			level:level,
 		});
   };
   
@@ -82,7 +82,8 @@ class App extends Component {
     }
 
 	render() {
-     //console.log("App level", this.state.level)
+
+     console.log("App level", this.state.level)
 		return (
 			<div className="fullApp">
 
@@ -105,9 +106,10 @@ class App extends Component {
 				<br></br>
 	
 				<div> 
+					
 				<Route path='/' exact render = { ()=>{
-				return	<div className="gameBoard">
-					<Board
+				return <div className="gameBoard">
+					<Board level={this.state.level}
 						setDefaultBoard={this.setDefaultBoard}
 						boxes={this.state.defaultBoard}
 						solutionBoard={this.state.solutionBoard}

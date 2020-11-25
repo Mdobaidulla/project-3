@@ -9,9 +9,10 @@ class Control extends Component {
 			minutes: 20,
 			level: props.level,
 			run: false,
-			medium: true,
-			hard: false,
-			random: false,
+		   medium:false,
+		   hard: false,
+		   random: false,
+			
 		};
 		this.counter = this.counter.bind(this);
 		this.count = this.count.bind(this);
